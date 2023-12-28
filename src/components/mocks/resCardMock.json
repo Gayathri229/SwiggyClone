@@ -1,0 +1,82 @@
+{
+    "info": {
+        "id": "685759",
+        "name": "The Rameshwaram Cafe",
+        "cloudinaryImageId": "c9b36413c755d072ec34619ee585bef4",
+        "locality": "2nd Phase",
+        "areaName": "JP Nagar",
+        "costForTwo": "₹250 for two",
+        "cuisines": [
+            "South Indian"
+        ],
+        "avgRating": 4.6,
+        "feeDetails": {
+            "restaurantId": "685759",
+            "fees": [
+                {
+                    "name": "BASE_DISTANCE",
+                    "fee": 5500
+                },
+                {
+                    "name": "BASE_TIME"
+                },
+                {
+                    "name": "ANCILLARY_SURGE_FEE"
+                }
+            ],
+            "totalFee": 5500
+        },
+        "parentId": "384316",
+        "avgRatingString": "4.6",
+        "totalRatingsString": "10K+",
+        "sla": {
+            "deliveryTime": 36,
+            "lastMileTravel": 6.6,
+            "serviceability": "SERVICEABLE",
+            "slaString": "36 mins",
+            "lastMileTravelString": "6.6 km",
+            "iconType": "ICON_TYPE_EMPTY"
+        },
+        "availability": {
+            "nextCloseTime": "2023-12-15 23:59:00",
+            "opened": true
+        },
+        "badges": {},
+        "isOpen": true,
+        "aggregatedDiscountInfoV2": {},
+        "type": "F",
+        "badgesV2": {
+            "entityBadges": {
+                "imageBased": {},
+                "textBased": {},
+                "textExtendedBadges": {}
+            }
+        },
+        "orderabilityCommunication": {
+            "title": {},
+            "subTitle": {},
+            "message": {},
+            "customIcon": {}
+        },
+        "differentiatedUi": {
+            "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+            "differentiatedUiMediaDetails": {
+                "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+                "lottie": {},
+                "video": {}
+            }
+        },
+        "reviewsSummary": {},
+        "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+        "restaurantOfferPresentationInfo": {}
+    },
+    "analytics": {
+        "context": "seo-data-594f6a49-b933-4f58-8bb8-bbeca46bf6e1"
+    },
+    "cta": {
+        "link": "https://www.swiggy.com/restaurants/the-rameshwaram-cafe-2nd-phase-jp-nagar-bangalore-685759",
+        "text": "RESTAURANT_MENU",
+        "type": "WEBLINK"
+    },
+    "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
+}
