@@ -117,18 +117,20 @@ const Body = () => {
     },
 
     "Delivery Time": () => {
-      const filteredList = listOfRestaurants.filter((res) => (
-        res?.info?.sla?.deliveryTime < 30
-      ));
+      const filteredList = listOfRestaurants.filter(
+        (res) => res?.info?.sla?.deliveryTime < 30
+      );
       setFilteredRestaurants(filteredList);
     },
 
-    "Offers": () => {
-      const filteredList = listOfRestaurants.filter((res)=> (
-        res?.info?.aggregatedDiscountInfoV3 && res?.info?.aggregatedDiscountInfoV3?.header !== ""
-      ));
+    Offers: () => {
+      const filteredList = listOfRestaurants.filter(
+        (res) =>
+          res?.info?.aggregatedDiscountInfoV3 &&
+          res?.info?.aggregatedDiscountInfoV3?.header !== ""
+      );
       setFilteredRestaurants(filteredList);
-    }
+    },
   };
 
   return listOfRestaurants.length === 0 ? (
@@ -136,30 +138,6 @@ const Body = () => {
   ) : (
     <div className="body m-auto w-10/12">
       <div className="filter flex items-center shadow-md">
-        <div className="search p-2 m-2 ml-4">
-          <input
-            type="text"
-            id="searchBar"
-            className="border border-solid border-black p-1 rounded-sm"
-            value={searchInput}
-            data-testid="searchInput"
-            onChange={(e) => {
-              setSearchInput(e.target.value);
-            }}
-          />
-          <button
-            id="searchButton"
-            className="px-4 py-2 bg-green-100 m-4 rounded-md"
-            onClick={() => {
-              const searchedRestaurants = listOfRestaurants.filter((res) =>
-                res.info.name.toLowerCase().includes(searchInput.toLowerCase())
-              );
-              setFilteredRestaurants(searchedRestaurants);
-            }}
-          >
-            Search
-          </button>
-        </div>
         {/* <div className="p-2 m-2">
           <button
             className="filter-btn bg-gray-100 px-4 py-2 m-2 rounded-md"
@@ -206,7 +184,7 @@ const Body = () => {
         >
           <div className="flex gap-4 px-4">
             {cuisineList.map((cuisines) => (
-              <div key={cuisines.id} className="w-[144px]">
+              <div key={cuisines.id} className="w-[144px] cursor-pointer">
                 <img
                   className="w-full h-full"
                   src={CUISINE_IMAGES_URL + cuisines.imageId}
@@ -245,7 +223,7 @@ const Body = () => {
             <Link
               key={topBrand.info.id}
               to={"/restaurants/" + topBrand.info.id}
-              className="relative"
+              className="relative group"
             >
               {topBrand.info.aggregatedDiscountInfoV3 &&
               topBrand.info.aggregatedDiscountInfoV3.header !== "FREE ITEM" ? (
@@ -266,24 +244,57 @@ const Body = () => {
           </h2>
         </div>
 
-        <div className="filters">
-          <div className="flex m-4 gap-4">
-            {facetList.map(
-              (facet) =>
-                facet?.label !== "Cuisines" && (
-                  <div
-                    key={facet?.id}
-                    className="p-2 border border-black rounded-3xl border-opacity-30 cursor-pointer active:bg-orange-400"
-                  >
-                    <button
-                      className="font-spaceGrotesk opacity-80"
-                      onClick={functionMap[facet?.label]}
+        <div className="filters flex justify-between items-center">
+          <div>
+            <div className="flex m-4 gap-4">
+              {facetList.map(
+                (facet) =>
+                  facet?.label !== "Cuisines" &&
+                  facet.label !== "Explore" && (
+                    <div
+                      key={facet?.id}
+                      className="p-2 border border-black rounded-3xl border-opacity-30 cursor-pointer active:bg-orange-400"
                     >
-                      {facet?.facetInfo[0]?.label}
-                    </button>
-                  </div>
-                )
-            )}
+                      <button
+                        className="font-spaceGrotesk opacity-80"
+                        onClick={functionMap[facet?.label]}
+                      >
+                        {facet?.facetInfo[0]?.label}
+                      </button>
+                    </div>
+                  )
+              )}
+            </div>
+          </div>
+
+          <div className="search p-2 m-2 ml-4 relative">
+            <input
+              type="text"
+              id="searchBar"
+              className="p-3 rounded-xl bg-[#f5f0f0] w-[400px] h-[50px] font-montserrat"
+              value={searchInput}
+              data-testid="searchInput"
+              placeholder="Search for restaurant and food"
+              onChange={(e) => {
+                setSearchInput(e.target.value);
+              }}
+            />
+            <button
+              id="searchButton"
+              className="px-4 py-2 rounded-md absolute inset-y-0 right-0"
+              onClick={() => {
+                const searchedRestaurants = listOfRestaurants.filter((res) =>
+                  res.info.name
+                    .toLowerCase()
+                    .includes(searchInput.toLowerCase())
+                );
+                setFilteredRestaurants(searchedRestaurants);
+              }}
+            >
+              <svg width={20} height={21} viewBox="0 0 20 21" fill="#02060c" stroke="rgba(2, 6, 12, 0.6)" opacity={0.5}> 
+                <path fillRule="evenodd" d="M13.0998 8.84232C13.0998 11.7418 10.7493 14.0922 7.84989 14.0922C4.95046 14.0922 2.6 11.7418 2.6 8.84232C2.6 5.94289 4.95046 3.59243 7.84989 3.59243C10.7493 3.59243 13.0998 5.94289 13.0998 8.84232ZM12.1431 14.1802C10.9686 15.1261 9.47534 15.6922 7.84989 15.6922C4.0668 15.6922 1 12.6254 1 8.84232C1 5.05923 4.0668 1.99243 7.84989 1.99243C11.633 1.99243 14.6998 5.05923 14.6998 8.84232C14.6998 10.4974 14.1128 12.0153 13.1357 13.1993L18.319 17.9606C18.7226 18.3313 18.7359 18.9637 18.3483 19.3511C17.9634 19.7357 17.3365 19.7254 16.9645 19.3282L12.1431 14.1802Z"></path>
+              </svg>
+            </button>
           </div>
         </div>
 
@@ -292,7 +303,7 @@ const Body = () => {
             <Link
               key={restaurant.info.id}
               to={"/restaurants/" + restaurant.info.id}
-              className="relative"
+              className="relative group"
             >
               {restaurant?.info?.aggregatedDiscountInfoV3 ? (
                 <RestaurantCardWithOffer resData={restaurant} />

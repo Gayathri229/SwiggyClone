@@ -11,11 +11,23 @@ const RestaurantMenu = () => {
   const resInfo = useRestaurantMenu(resId);
 
   const [showIndex, setShowIndex] = useState(null);
+  const [isToggled, setToggle] = useState(false);
+
+  const handleToggle = () => {
+    setToggle(!isToggled);
+  }
 
   if (resInfo === null) return <Shimmer />;
 
-  const { name, costForTwoMessage, cuisines, avgRating, totalRatingsString } =
-    resInfo?.cards[0]?.card?.card?.info;
+  const {
+    name,
+    costForTwoMessage,
+    cuisines,
+    avgRating,
+    totalRatingsString,
+    locality,
+    sla,
+  } = resInfo?.cards[0]?.card?.card?.info;
 
   const { itemCards } =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
@@ -28,32 +40,45 @@ const RestaurantMenu = () => {
     );
 
   return (
-    <div className="menu text-center">
-      <div className="restaurant-header flex justify-between items-center bg-gray-100 shadow-lg m-4 p-7 font-nunito">
-        <div className="restaurant-header-left flex flex-col m-5">
-          <p className="restaurant-name font-bold my-6 text-2xl">{name}</p>
-          <p className="restaurant-cuisines my-2 text-lg">
+    <div className="menu text-center w-7/12 m-auto">
+      <div className="restaurant-header flex justify-between m-4 p-7">
+        <div className="restaurant-header-left flex flex-col items-start m-5">
+          <p className="restaurant-name font-bold font-montserrat text-lg mb-2">
+            {name}
+          </p>
+          <p className="restaurant-cuisines font-spaceGrotesk mb-1 text-sm opacity-50 leading-tight">
             {cuisines.join(", ")}
           </p>
-          <p className="cost-for-two my-2">{costForTwoMessage}</p>
+          <p className="font-spaceGrotesk mb-1 text-sm opacity-50 leading-tight">
+            {locality}, {sla.lastMileTravelString}
+          </p>
         </div>
-        <div className="restaurant-rating border border-solid border-gray-300 rounded-md w-[102px] h-24 flex flex-col justify-center items-center m-4">
-          <div className="rating-div flex justify-center items-center">
+        <div className="restaurant-rating border border-solid border-gray-300 rounded-md w-[75px] h-[75px] flex flex-col justify-center items-center m-4 border-opacity-50">
+          <div className="rating-div flex justify-center items-center mb-1">
             <span className="rating-icon">
               <img
                 src={RATING}
                 alt="rating-image"
-                className="w-[18px] m-1 mb-2"
+                className="w-[16px] m-1 mb-2"
               ></img>
             </span>
-            <span className="rating text-green-800 font-extrabold">
+            <span className="rating text-green-800 font-extrabold font-montserrat text-sm pb-1 mt-[3px]">
               {avgRating}
             </span>
           </div>
-          <div className="total-ratings font-medium text-gray-400">
+          <hr className="bg-black w-[80%] h-[2px] opacity-10" />
+          <div className="total-ratings font-bold font-spaceGrotesk text-xs opacity-60 tracking-tighter mt-[9px]">
             <p>{totalRatingsString}</p>
           </div>
         </div>
+      </div>
+
+      <div className="flex justify-center">
+        <hr className="bg-black w-[88%] h-[2px] opacity-10" />
+      </div>
+
+      <div className="veg-filter">
+        <button onClick={handleToggle}>Veg Only</button>
       </div>
 
       <div className="restaurant-menu">

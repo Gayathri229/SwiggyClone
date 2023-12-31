@@ -1,14 +1,20 @@
 import { useDispatch } from "react-redux";
 import { CDN_URL } from "../utils/constants";
 import { addItem } from "../utils/cartSlice";
+import { toast } from "react-hot-toast";
 
 const MenuItems = ({ itemList }) => {
-  // console.log("ITEMS", itemList);
-
   const dispatch = useDispatch();
 
   const handleAddItems = (items) => {
     dispatch(addItem(items));
+    toast.success("Item added to cart", {
+      style: {
+        className: "font-montserrat",
+        fontWeight: "bold",
+        duration: 3000,
+      },
+    });
   };
 
   return (
