@@ -1,4 +1,4 @@
-import { CDN_URL } from "../utils/constants";
+import { CUISINE_IMAGES_URL } from "../utils/constants";
 import { useDispatch } from "react-redux";
 import { removeItem } from "../utils/cartSlice";
 
@@ -27,11 +27,11 @@ const CartItems = ({ itemList }) => {
                   : item.card.info.defaultPrice / 100}
               </span>
             </div>
-            <p className="text-sm font-spaceGrotesk opacity-70">{item.card.info.description}</p>
+            <p className="text-xs font-spaceGrotesk opacity-70">{item.card.info.description}</p>
           </div>
           <div className="w-3/12 p-4 flex items-end">
             <img
-              src={CDN_URL + item.card.info.imageId}
+              src={CUISINE_IMAGES_URL + item.card.info.imageId}
               className="w-full rounded-md"
             />
             <div className="absolute">

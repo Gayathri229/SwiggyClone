@@ -63,11 +63,6 @@ const Body = () => {
     }
   };
 
-  //conditional rendering ->
-  //   if (listOfRestaurants.length === 0) {
-  //     return <Shimmer />;
-  //   }
-
   if (onlineStatus === false)
     return (
       <h1>Looks like you're offline. Please check your internet connection!</h1>
@@ -133,24 +128,12 @@ const Body = () => {
     },
   };
 
+  //conditional rendering
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body m-auto w-10/12">
       <div className="filter flex items-center shadow-md">
-        {/* <div className="p-2 m-2">
-          <button
-            className="filter-btn bg-gray-100 px-4 py-2 m-2 rounded-md"
-            onClick={() => {
-              const filteredList = listOfRestaurants.filter(
-                (res) => res.info.avgRating > 4.5
-              );
-              setFilteredRestaurants(filteredList);
-            }}
-          >
-            Top Rated Restaurants
-          </button>
-        </div> */}
         {/* <div className="p-2 m-2">
           <label>Username:</label>
           <input className="border border-black" value={loggedInUser} onChange={(e)=> {
@@ -190,7 +173,6 @@ const Body = () => {
                   src={CUISINE_IMAGES_URL + cuisines.imageId}
                   alt="cuisines"
                 ></img>
-                {/* <p>{cuisines.action.text}</p> */}
               </div>
             ))}
           </div>
@@ -291,8 +273,18 @@ const Body = () => {
                 setFilteredRestaurants(searchedRestaurants);
               }}
             >
-              <svg width={20} height={21} viewBox="0 0 20 21" fill="#02060c" stroke="rgba(2, 6, 12, 0.6)" opacity={0.5}> 
-                <path fillRule="evenodd" d="M13.0998 8.84232C13.0998 11.7418 10.7493 14.0922 7.84989 14.0922C4.95046 14.0922 2.6 11.7418 2.6 8.84232C2.6 5.94289 4.95046 3.59243 7.84989 3.59243C10.7493 3.59243 13.0998 5.94289 13.0998 8.84232ZM12.1431 14.1802C10.9686 15.1261 9.47534 15.6922 7.84989 15.6922C4.0668 15.6922 1 12.6254 1 8.84232C1 5.05923 4.0668 1.99243 7.84989 1.99243C11.633 1.99243 14.6998 5.05923 14.6998 8.84232C14.6998 10.4974 14.1128 12.0153 13.1357 13.1993L18.319 17.9606C18.7226 18.3313 18.7359 18.9637 18.3483 19.3511C17.9634 19.7357 17.3365 19.7254 16.9645 19.3282L12.1431 14.1802Z"></path>
+              <svg
+                width={20}
+                height={21}
+                viewBox="0 0 20 21"
+                fill="#02060c"
+                stroke="rgba(2, 6, 12, 0.6)"
+                opacity={0.5}
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M13.0998 8.84232C13.0998 11.7418 10.7493 14.0922 7.84989 14.0922C4.95046 14.0922 2.6 11.7418 2.6 8.84232C2.6 5.94289 4.95046 3.59243 7.84989 3.59243C10.7493 3.59243 13.0998 5.94289 13.0998 8.84232ZM12.1431 14.1802C10.9686 15.1261 9.47534 15.6922 7.84989 15.6922C4.0668 15.6922 1 12.6254 1 8.84232C1 5.05923 4.0668 1.99243 7.84989 1.99243C11.633 1.99243 14.6998 5.05923 14.6998 8.84232C14.6998 10.4974 14.1128 12.0153 13.1357 13.1993L18.319 17.9606C18.7226 18.3313 18.7359 18.9637 18.3483 19.3511C17.9634 19.7357 17.3365 19.7254 16.9645 19.3282L12.1431 14.1802Z"
+                ></path>
               </svg>
             </button>
           </div>
