@@ -13,6 +13,7 @@ import { Provider } from "react-redux";
 import appStore from "./utils/appStore.js";
 import Cart from "./components/Cart.js";
 import {Toaster} from "react-hot-toast";
+import "./index.css";
 
 const Grocery = lazy(() => import("./components/Grocery.js"));
 

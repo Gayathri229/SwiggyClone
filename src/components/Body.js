@@ -1,6 +1,6 @@
 import RestaurantCard, { RestaurantCardOffer } from "./RestaurantCard.js";
 import { useState, useEffect, useContext } from "react";
-import Shimmer from "./Shimmer.js";
+import HomePageShimmer from "./HomePageShimmer.js";
 import { Link, json } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
 import UserContext from "../utils/UserContext.js";
@@ -130,7 +130,7 @@ const Body = () => {
 
   //conditional rendering
   return listOfRestaurants.length === 0 ? (
-    <Shimmer />
+    <HomePageShimmer />
   ) : (
     <div className="body m-auto w-10/12">
       <div className="filter flex items-center shadow-md">

@@ -1,12 +1,11 @@
-import Shimmer from "./Shimmer";
-import { useParams } from "react-router-dom";
-import { RATING } from "../utils/constants";
+import RestaurantMenuShimmer from "./RestaurantMenuShimmer";
+import { Link, useParams } from "react-router-dom";
+import { RATING, PURE_VEG_LOGO } from "../utils/constants";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { RestaurantCategory } from "./RestaurantCategory";
 import { useState } from "react";
 import ReactSwitch from "react-switch";
 import { MdTimelapse } from "react-icons/md";
-import { TbCoinRupee } from "react-icons/tb";
 import { HiOutlineCurrencyRupee } from "react-icons/hi2";
 
 const RestaurantMenu = () => {
@@ -15,7 +14,7 @@ const RestaurantMenu = () => {
   const [showIndex, setShowIndex] = useState(null);
   const [isVegOnly, setVegOnlyValue] = useState(false);
 
-  if (resInfo === null) return <Shimmer />;
+  if (resInfo === null) return <RestaurantMenuShimmer />;
 
   const {
     name,
@@ -25,6 +24,8 @@ const RestaurantMenu = () => {
     totalRatingsString,
     locality,
     sla,
+    veg,
+    badges,
   } = resInfo?.cards[0]?.card?.card?.info;
 
   const { itemCards } =
@@ -42,16 +43,27 @@ const RestaurantMenu = () => {
   };
 
   return (
-    <div className="menu text-center w-7/12 m-auto">
-      <div className="restaurant-header flex justify-between m-4 p-7">
+    <div className="menu-page text-center w-7/12 m-auto">
+      <div className="restaurant-path flex justify-start font-montserrat text-[10px] font-bold opacity-40 mt-6 px-8 gap-2">
+        <span>
+          <Link to="/">Home /</Link>
+        </span>
+        <span>
+          <Link to="">Bangalore /</Link>
+        </span>
+        <span>
+          <p>{name}</p>
+        </span>
+      </div>
+      <div className="restaurant-header flex justify-between px-8 pt-10">
         <div className="restaurant-header-left flex flex-col items-start m-5">
           <p className="restaurant-name font-bold font-montserrat text-lg mb-2">
             {name}
           </p>
-          <p className="restaurant-cuisines font-spaceGrotesk mb-1 text-sm opacity-50 leading-tight">
+          <p className="restaurant-cuisines font-montserrat mb-1 text-xs font-semibold opacity-40 leading-tight tracking-tight">
             {cuisines.join(", ")}
           </p>
-          <p className="font-spaceGrotesk mb-1 text-sm opacity-50 leading-tight">
+          <p className="font-montserrat mb-1 text-xs opacity-40 font-semibold leading-tight tracking-tight">
             {locality}, {sla.lastMileTravelString}
           </p>
         </div>
@@ -77,7 +89,12 @@ const RestaurantMenu = () => {
 
       <div className="flex justify-center">
         {/* <hr className="bg-black w-[88%] h-[2px] opacity-10" /> */}
-        <svg width="800" height="20" xmlns="http://www.w3.org/2000/svg" className="opacity-20">
+        <svg
+          width="800"
+          height="20"
+          xmlns="http://www.w3.org/2000/svg"
+          className="opacity-20"
+        >
           <line
             x1="10"
             y1="10"
@@ -90,7 +107,7 @@ const RestaurantMenu = () => {
         </svg>
       </div>
 
-      <div className="flex ml-12 my-6 opacity-80">
+      <div className="flex ml-12 mb-6 mt-2 opacity-80">
         <div className="flex mr-6">
           <MdTimelapse size={22} className="mr-1" />
           <span className="font-montserrat font-extrabold text-sm">
@@ -109,25 +126,38 @@ const RestaurantMenu = () => {
         <hr className="bg-black w-[88%] h-[2px] opacity-10" />
       </div> */}
 
-      <div className="veg-filter flex justify-start ml-12 my-6 ">
-        <p className="mr-3 font-montserrat text-sm font-bold opacity-70">
-          Veg Only
-        </p>
-        <div className="opacity-60">
-          <ReactSwitch
-            height={19}
-            width={40}
-            uncheckedIcon={false}
-            checkedIcon={false}
-            borderRadius={4}
-            checked={isVegOnly}
-            onChange={handleToggle}
+      {veg ? (
+        <div className="pure-veg flex justify-start ml-12 mt-12 mb-3 items-center">
+          <img
+            src={PURE_VEG_LOGO}
+            alt="pure-veg-logo"
+            className="w-[20px] mr-2"
           />
+          <span className="text-green-600 font-montserrat font-semibold text-xs tracking-tighter">
+            PURE VEG
+          </span>
         </div>
-      </div>
+      ) : (
+        <div className="veg-filter flex justify-start ml-12 mt-12 mb-3">
+          <p className="mr-3 font-montserrat text-sm font-bold opacity-70">
+            Veg Only
+          </p>
+          <div className="opacity-60">
+            <ReactSwitch
+              height={19}
+              width={40}
+              uncheckedIcon={false}
+              checkedIcon={false}
+              borderRadius={4}
+              checked={isVegOnly}
+              onChange={handleToggle}
+            />
+          </div>
+        </div>
+      )}
 
       <div className="flex justify-center">
-        <hr className="bg-black w-[88%] h-[1px] opacity-10" />
+        <hr className="bg-black w-[89%] h-[2px] opacity-10" />
       </div>
 
       <div className="restaurant-menu">

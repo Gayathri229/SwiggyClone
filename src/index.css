@@ -1,0 +1,57 @@
+.spinner {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(
+    180deg,
+    #ecebeb,
+    hsla(0, 3%, 92%, 0.51)53%,
+    hsla(0, 3%, 92%, 0)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  animation: rotate 2s infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.spinner::after {
+  position: absolute;
+  display: block;
+  top: 4px;
+  left: 4px;
+  width: 72px;
+  height: 72px;
+  content: "";
+  background-color: #171a29;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.shimmer-effect {
+  animation: shimmer 3s;
+  animation-iteration-count: infinite;
+  background: linear-gradient(to right, #eef0f5 5%, #cccccc 25%, #eef0f5 35%);
+  background-size: 1000px 100%;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: -1000px 0;
+  }
+
+  to {
+    background-position: 1000px 0;
+  }
+}

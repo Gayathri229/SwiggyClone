@@ -18,9 +18,9 @@ const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
 
   return (
-    <div className="header flex justify-between shadow-lg mb-2 h-24">
+    <div className="header flex justify-between shadow-lg h-[86px]">
       <div className="logo-container ml-4">
-        <img className="logo w-24" src={FOOD_APP_LOGO} alt="Food App Logo" />
+        <img className="logo w-16" src={FOOD_APP_LOGO} alt="Food App Logo" />
       </div>
       <div className="nav-items flex items-center">
         <ul className="flex p-4 m-10">
