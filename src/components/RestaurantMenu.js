@@ -174,6 +174,13 @@ const RestaurantMenu = () => {
           />
         ))}
       </div>
+
+      <div className="restaurant-footer h-[230px] bg-[#f1f1f6] flex justify-center mx-12 mt-4">
+        <div className="license-no">
+          {}
+        </div>
+        <div className="outlet-address"></div>
+      </div>
     </div>
   );
 };
