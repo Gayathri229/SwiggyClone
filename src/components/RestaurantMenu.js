@@ -1,12 +1,13 @@
 import RestaurantMenuShimmer from "./RestaurantMenuShimmer";
 import { Link, useParams } from "react-router-dom";
-import { RATING, PURE_VEG_LOGO } from "../utils/constants";
+import { RATING, PURE_VEG_LOGO, FSSAI_IMAGE } from "../utils/constants";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { RestaurantCategory } from "./RestaurantCategory";
 import { useState } from "react";
 import ReactSwitch from "react-switch";
 import { MdTimelapse } from "react-icons/md";
 import { HiOutlineCurrencyRupee } from "react-icons/hi2";
+import { TiLocation } from "react-icons/ti";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -36,6 +37,20 @@ const RestaurantMenu = () => {
       (category) =>
         category?.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
+
+  const restaurantLicenseInfo =
+    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (category) =>
+        category?.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.RestaurantLicenseInfo"
+    );
+
+  const restaurantOutletAddress =
+    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (category) =>
+        category?.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.RestaurantAddress"
     );
 
   const handleToggle = () => {
@@ -175,11 +190,50 @@ const RestaurantMenu = () => {
         ))}
       </div>
 
-      <div className="restaurant-footer h-[230px] bg-[#f1f1f6] flex justify-center mx-12 mt-4">
-        <div className="license-no">
-          {}
+      <div className="restaurant-footer h-[230px] bg-[#f1f1f6] flex flex-col items-start mx-12 mt-4 text-[#93959f]">
+        <div className="license-no flex items-start gap-3 m-4">
+          <img
+            src={FSSAI_IMAGE}
+            alt="fssai-image"
+            className="h-[30px] w-[60px]"
+          />
+          <p className="font-spaceGrotesk text-sm p-2">
+            {restaurantLicenseInfo?.[0]?.card?.card?.text?.[0]}
+          </p>
         </div>
-        <div className="outlet-address"></div>
+        <svg
+          width="771"
+          height="12"
+          xmlns="http://www.w3.org/2000/svg"
+          className="opacity-20"
+        >
+          <line
+            x1="18"
+            y1="1"
+            x2="800"
+            y2="1"
+            stroke="black"
+            strokeWidth="1"
+            // strokeDasharray="2 2"
+          />
+        </svg>
+        <div className="outlet-address flex flex-col items-start m-5 font-spaceGrotesk">
+          <p className="text-sm font-bold leading-[10px] mb-2">
+            {restaurantOutletAddress?.[0]?.card?.card?.name}
+          </p>
+          <p className="text-[13px] leading-[8px] font-thin">
+            (Outlet:{restaurantOutletAddress?.[0]?.card?.card?.area})
+          </p>
+          <div className="flex mt-4 items-start">
+            <div className="mr-1">
+              <TiLocation size={15} />
+            </div>
+            <p className="text-xs restaurant-address-last-line">
+              {/* leading-[6px] , pt-[5px]*/}
+              {restaurantOutletAddress?.[0]?.card?.card?.completeAddress}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

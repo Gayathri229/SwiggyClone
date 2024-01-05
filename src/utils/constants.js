@@ -32,3 +32,5 @@ export const LOADING_ICECREAM_BANNER = "https://media-assets.swiggy.com/swiggy/i
 export const GOOGLE_PLAY_BANNER = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/portal/m/play_store.png";
 
 export const APP_STORE_BANNER = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto/portal/m/app_store.png";
+
+export const FSSAI_IMAGE = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_120,h_60/fssai_final_edss9i";
