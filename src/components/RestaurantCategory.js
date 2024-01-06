@@ -23,42 +23,44 @@ export const RestaurantCategory = ({
   return (
     <div>
       {menuLength !== 0 && (
-      <div className="accordion-header w-11/12 mx-auto my-2 p-3">
-        <div
-          className="flex justify-between items-center cursor-pointer mb-2"
-          onClick={handleClick}
-        >
-          <span className="font-bold text-[16px] font-montserrat opacity-80">
-            {menuLength !== 0 && (
-              <>
-                {categoryMenu.title} ({menuLength})
-              </>
-            )}
-          </span>
-          <span>
-            {showItems ? (
-              <SlArrowUp size={16} className="m-2" />
-            ) : (
-              <SlArrowDown size={16} className="m-2" />
-            )}
-          </span>
-        </div>
+        <div className="accordion-header w-11/12 mx-auto my-2 p-3">
+          <div
+            className="flex justify-between items-center cursor-pointer mb-2"
+            onClick={handleClick}
+          >
+            <span className="font-bold text-[16px] font-montserrat opacity-80">
+              {menuLength !== 0 && (
+                <>
+                  {categoryMenu.title} ({menuLength})
+                </>
+              )}
+            </span>
+            <span>
+              {showItems ? (
+                <SlArrowUp size={16} className="m-2" />
+              ) : (
+                <SlArrowDown size={16} className="m-2" />
+              )}
+            </span>
+          </div>
 
-        <div className="w-full">
-          {isVeg
-            ? showItems && (
-                <MenuItems
-                  itemList={categoryMenu?.itemCards?.filter(
-                    (items) =>
-                      items?.card?.info?.itemAttribute?.vegClassifier === "VEG"
-                  )}
-                />
-              )
-            : showItems && <MenuItems itemList={categoryMenu?.itemCards} />}
-        </div>
+          <div className="w-full">
+            {isVeg
+              ? showItems && (
+                  <MenuItems
+                    itemList={categoryMenu?.itemCards?.filter(
+                      (items) =>
+                        items?.card?.info?.itemAttribute?.vegClassifier ===
+                        "VEG"
+                    )}
+                  />
+                )
+              : showItems && <MenuItems itemList={categoryMenu?.itemCards} />}
+          </div>
 
-        <hr className="h-[16px] bg-[#f1f1f6]" />
-      </div>)}
+          <hr className="h-[16px] bg-[#f1f1f6]" />
+        </div>
+      )}
     </div>
   );
 };
