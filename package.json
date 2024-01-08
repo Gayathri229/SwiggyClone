@@ -24,8 +24,6 @@
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.1.2",
     "babel-jest": "^29.7.0",
-    "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.7",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "postcss": "^8.4.31",
@@ -36,16 +34,16 @@
     "test": "jest",
     "run-test": "jest --watchAll",
     "devBuild": "parcel index.html",
-    "prodBuild": "parcel build index.html"
+    "build": "parcel build index.html --dist-dir build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Gayathri229/ReactCode_NamasteReact.git"
+    "url": "git+https://github.com/Gayathri229/SwiggyClone.git"
   },
   "author": "Gayathri",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Gayathri229/ReactCode_NamasteReact/issues"
+    "url": "https://github.com/Gayathri229/SwiggyClone.git/issues"
   },
-  "homepage": "https://github.com/Gayathri229/ReactCode_NamasteReact#readme"
+  "homepage": "https://github.com/Gayathri229/SwiggyClone.git#readme"
 }

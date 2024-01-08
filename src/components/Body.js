@@ -40,28 +40,28 @@ const Body = () => {
         "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
       const json = await data.json();
-      setFoodDeliveryHeading(json?.data?.cards[2]?.card?.card?.title);
+      setFoodDeliveryHeading(json?.data?.cards[3]?.card?.card?.title);
       setListOfRestaurants(
-        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants
       );
       setFilteredRestaurants(
-        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants
       );
 
       setCuisineList(
-        json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
+        json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.info
       );
-      setCuisineListHeading(json?.data?.cards[0].card?.card?.header?.title);
+      setCuisineListHeading(json?.data?.cards[1].card?.card?.header?.title);
 
       setRestaurantChains(
-        json?.data?.cards[1].card?.card?.gridElements?.infoWithStyle
+        json?.data?.cards[2].card?.card?.gridElements?.infoWithStyle
           ?.restaurants
       );
-      setRestaurantChainHeading(json?.data?.cards[1].card?.card?.header?.title);
+      setRestaurantChainHeading(json?.data?.cards[2].card?.card?.header?.title);
 
-      setFacetList(json?.data?.cards[3]?.card?.card?.facetList);
+      setFacetList(json?.data?.cards[4]?.card?.card?.facetList);
     } catch (err) {
       console.log(err);
     }

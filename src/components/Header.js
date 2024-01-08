@@ -28,6 +28,7 @@ const Header = () => {
           <li className="px-2 font-montserrat font-bold opacity-60 ml-7">
             <Link to="/">Home</Link>
           </li>
+          {/* <li className="font-GrotMed font-[500] opacity-60">Search</li> */}
           <li className="px-2 font-montserrat font-bold opacity-60 ml-7">
             <Link to="/about">About Us</Link>
           </li>

@@ -13,12 +13,11 @@ import { Provider } from "react-redux";
 import appStore from "./utils/appStore.js";
 import Cart from "./components/Cart.js";
 import {Toaster} from "react-hot-toast";
-import "./index.css";
+import "./css/index.css";
 
 const Grocery = lazy(() => import("./components/Grocery.js"));
 
 const AppLayout = () => {
-  // console.log(<Body />);
   const [userName, setUserName] = useState();
 
   useEffect(() => {
