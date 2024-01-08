@@ -1,4 +1,4 @@
-# Soru App Planning
+# Swoogy App Planning
 <!-- 
   Header
     - Logo
