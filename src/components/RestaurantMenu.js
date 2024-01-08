@@ -86,6 +86,11 @@ const RestaurantMenu = () => {
           <div className="rating-div flex justify-center items-center mb-1">
             <span className="rating-icon">
               <img
+                src=".public/images/PureVeg.png"
+                alt="rating-logo"
+                className="w-[16px] m-1 mb-2"
+              ></img>
+              <img
                 src={RATING}
                 alt="rating-image"
                 className="w-[16px] m-1 mb-2"

@@ -4,7 +4,6 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
 import { useContext } from "react";
 import { useSelector } from "react-redux";
-import SwoogyLogo from "../../public/images/SwoogyLogoBold.svg";
 import SwoogyLogoThin from "../../public/images/SwoogyLogoThin.svg";
 
 const Header = () => {

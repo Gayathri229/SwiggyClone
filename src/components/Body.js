@@ -7,6 +7,7 @@ import UserContext from "../utils/UserContext.js";
 // import useRestaurantList from "../utils/useRestaurantList.js";
 import ExploreRestaurants from "./ExploreRestaurants.js";
 import {
+  HOME_PAGE_API,
   CUISINE_IMAGES_URL,
   GOOGLE_PLAY_BANNER,
   APP_STORE_BANNER,
@@ -36,9 +37,8 @@ const Body = () => {
 
   const fetchData = async () => {
     try {
-      const data = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-      );
+      const url = 'https://corsproxy.org/?' + encodeURIComponent(HOME_PAGE_API);
+      const data = await fetch(url);
       const json = await data.json();
       setFoodDeliveryHeading(json?.data?.cards[3]?.card?.card?.title);
       setListOfRestaurants(

@@ -9,7 +9,8 @@ const useRestaurantMenu = (resId) => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(MENU_API + resId);
+    const url = 'https://corsproxy.org/?' + encodeURIComponent(MENU_API + resId);
+    const data = await fetch(url);
     const json = await data.json();
     setResInfo(json.data);
   };
