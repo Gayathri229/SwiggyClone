@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-// import foodAppLogo from "../../images/banana-leaf.png";
-import { FOOD_APP_LOGO } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
