@@ -85,11 +85,11 @@ const RestaurantMenu = () => {
         <div className="restaurant-rating border border-solid border-gray-300 rounded-md w-[75px] h-[75px] flex flex-col justify-center items-center m-4 border-opacity-50">
           <div className="rating-div flex justify-center items-center mb-1">
             <span className="rating-icon">
-              <img
+              {/* <img
                 src=".public/images/PureVeg.png"
                 alt="rating-logo"
                 className="w-[16px] m-1 mb-2"
-              ></img>
+              ></img> */}
               <img
                 src={RATING}
                 alt="rating-image"
