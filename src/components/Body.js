@@ -40,28 +40,32 @@ const Body = () => {
       const url = 'https://corsproxy.org/?' + encodeURIComponent(HOME_PAGE_API);
       const data = await fetch(url);
       const json = await data.json();
-      setFoodDeliveryHeading(json?.data?.cards[3]?.card?.card?.title);
+      
+      setCuisineList(
+        json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
+      );
+      setCuisineListHeading(json?.data?.cards[0].card?.card?.header?.title);
+
+      setRestaurantChains(
+        json?.data?.cards[1].card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+      setRestaurantChainHeading(json?.data?.cards[1].card?.card?.header?.title);
+
+      setFoodDeliveryHeading(json?.data?.cards[2]?.card?.card?.title);
+
+      setFacetList(json?.data?.cards[3]?.card?.card?.facetList);
+
       setListOfRestaurants(
-        json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants
       );
       setFilteredRestaurants(
-        json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants
       );
 
-      setCuisineList(
-        json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.info
-      );
-      setCuisineListHeading(json?.data?.cards[1].card?.card?.header?.title);
 
-      setRestaurantChains(
-        json?.data?.cards[2].card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
-      setRestaurantChainHeading(json?.data?.cards[2].card?.card?.header?.title);
-
-      setFacetList(json?.data?.cards[4]?.card?.card?.facetList);
     } catch (err) {
       console.log(err);
     }
