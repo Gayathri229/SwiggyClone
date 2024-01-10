@@ -1,44 +1,17 @@
-import User from "./User";
-import UserClass from "./UserClass";
-import { Component } from "react";
-import UserContext from "../utils/UserContext";
 
-class About extends Component {
-  constructor(props) {
-    super(props);
-    // console.log("Parent Constructor");
-  }
-
-  componentDidMount() {
-    // console.log("Parent Component Did Mount");
-  }
-
-  render() {
-    // console.log("Parent Render");
-
-    return (
-      <div>
-        <h1> About Us </h1>
-        <UserContext.Consumer>
-          {({ loggedInUser }) => <h1>{loggedInUser}</h1>}
-        </UserContext.Consumer>
-        <h2> Welcome to Soru App </h2>
-        {/* <UserClass name={"First"} location={"Coimbatore"} /> */}
-        {/* <UserClass name={"Second"} location={"Bangalore"} /> */}
-
+const About = () => {
+  return (
+    <div className="flex justify-center items-center">
+      <div className="font-montserrat font-semibold text-lg m-10 p-4 opacity-60">
+        Swiggy is an Indian online food ordering and delivery platform. Founded
+        in 2014, Swiggy is headquartered in Bangalore and operates in more than
+        500 Indian cities as of September 2021
       </div>
-    );
-  }
-}
-
-// const About = () => {
-//   return (
-//     <div>
-//       <h1> About Us </h1>
-//       <h2> Welcome to Soru App </h2>
-//       <UserClass name={"Gayathri (class)"} location={"Coimbatore (Class)"} />
-//     </div>
-//   );
-// };
+      <div className="lunch-image w-full h-[100vh] bg-cover bg-right"></div>
+    
+      {/* <img className="w-6/12"/> */}
+    </div>
+  );
+};
 
 export default About;

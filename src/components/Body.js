@@ -349,12 +349,12 @@ const Body = () => {
                   </svg>
                 </span>
                 <div className="text-white font-extrabold text-2xl font-spaceGrotesk ml-2 opacity-90">
-                  Swiggy
+                  Swoogy
                 </div>
               </div>
 
               <div className="font-spaceGrotesk text-white text-sm opacity-70">
-                © 2023 Bundl Technologies <br /> Pvt. Ltd
+                © 2023 All Rights Reserved <br /> Gayathri Arumugam
               </div>
             </div>
 

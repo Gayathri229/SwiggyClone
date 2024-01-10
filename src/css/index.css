@@ -1,3 +1,4 @@
+@import url(../../public/images/LunchImage.webp);
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -62,4 +63,8 @@
 
 .restaurant-address-last-line {
   text-align-last: left;
+}
+
+.lunch-image {
+  background-image: url('../../public/images/LunchImage.webp');
 }
