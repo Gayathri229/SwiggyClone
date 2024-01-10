@@ -23,7 +23,7 @@ const Cart = () => {
 
   return cartItems.length === 0 ? (
     <div className="flex flex-col justify-center items-center w-6/12 mx-auto">
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-2">
         <img src={EMPTY_CART} alt="empty-cart" className="w-7/12" />
       </div>
       <h2 className="font-montserrat font-extrabold text-xl mb-4">

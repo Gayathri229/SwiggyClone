@@ -32,11 +32,11 @@ const CartItems = ({ itemList }) => {
           <div className="w-3/12 p-4 flex items-end">
             <img
               src={CUISINE_IMAGES_URL + item.card.info.imageId}
-              className="w-full rounded-md"
+              className="w-[130px] rounded-md h-[96px]"
             />
             <div className="absolute">
               <button
-                className="w-20 p-2 px-3 mx-8 text-xs bg-red-600 text-white rounded-sm font-montserrat uppercase font-semibold"
+                className="w-[90px] h-[36px] p-2 px-4 mx-5 text-xs bg-red-600 text-white rounded-sm font-montserrat uppercase font-semibold"
                 onClick={() => handleDeleteItems(item)}
               >
                 Remove

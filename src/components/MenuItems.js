@@ -52,10 +52,10 @@ const MenuItems = ({ itemList, isVeg }) => {
             )}
             <div className="absolute">
               <button
-                className="p-2 px-4 mx-5 w-[90px] h-[36px] bg-white shadow-lg text-green-600 text-xs font-bold rounded-lg font-montserrat"
+                className="p-2 px-4 mx-5 w-[90px] h-[36px] bg-white shadow-lg text-green-600 text-xs font-bold rounded-lg uppercase font-montserrat"
                 onClick={() => handleAddItems(items)}
               >
-                ADD +
+                Add +
               </button>
             </div>
           </div>

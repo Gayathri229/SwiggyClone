@@ -14,10 +14,11 @@ module.exports = {
         "black-bottom": ["rgba(0,0,0,0), rgba(0,0,0,1)"],
         "bottom-black": ["rgba(27, 30, 36, 0) 0%, rgb(27, 30, 36) 84.21%)"],
       },
+      colors: {
+        orangeColor: '#fc8019',
+      },
     },
-    colors: {
-      orangeColor: '#fc8019',
-    },
+    
   },
   plugins: [require("tailwind-scrollbar-hide")],
 };

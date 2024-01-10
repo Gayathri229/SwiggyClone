@@ -27,7 +27,7 @@ const Header = () => {
               <img
                 src={SwoogyLogoBold}
                 alt="swoogy-logo"
-                className="w-[90px] h-[90px]"
+                className="w-[120px] h-[70px]"
               />
             </Link>
           }
@@ -67,7 +67,7 @@ const Header = () => {
                 ) : (
                   <span className="relative flex justify-center -left-1">
                     <svg
-                      className="fill-[#60b246] stroke-0 stroke-[#60b246]"
+                      className="fill-[#60b246] stroke-0 stroke-[#60b246] group-hover:fill-orangeColor"
                       viewBox="-1 0 37 32"
                       height={20}
                       width={20}
