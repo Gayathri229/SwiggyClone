@@ -1,10 +1,9 @@
 import RestaurantCard, { RestaurantCardOffer } from "./RestaurantCard.js";
 import { useState, useEffect, useContext } from "react";
 import HomePageShimmer from "./HomePageShimmer.js";
-import { Link, json } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
 import UserContext from "../utils/UserContext.js";
-// import useRestaurantList from "../utils/useRestaurantList.js";
 import ExploreRestaurants from "./ExploreRestaurants.js";
 import {
   HOME_PAGE_API,
@@ -37,8 +36,8 @@ const Body = () => {
 
   const fetchData = async () => {
     try {
-      const url = 'https://corsproxy.org/?' + encodeURIComponent(HOME_PAGE_API);
-      const data = await fetch(url);
+      const url = HOME_PAGE_API;
+      const data = await fetch(HOME_PAGE_API);
       const json = await data.json();
       
       setCuisineList(
