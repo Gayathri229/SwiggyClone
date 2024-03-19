@@ -37,36 +37,52 @@ const Body = () => {
   const fetchData = async () => {
     try {
       const url = HOME_PAGE_API;
-      const data = await fetch(HOME_PAGE_API);
+      const data = await fetch(url);
       const json = await data.json();
-      
-      setCuisineList(
-        json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
-      );
-      setCuisineListHeading(json?.data?.cards[0].card?.card?.header?.title);
 
-      setRestaurantChains(
-        json?.data?.cards[1].card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
-      setRestaurantChainHeading(json?.data?.cards[1].card?.card?.header?.title);
+      const cuisineListData = json?.data?.cards[0]?.card?.card;
+      const restaurantChainsData = json?.data?.cards[1].card?.card;
+      const foodDeliveryData = json?.data?.cards[2]?.card?.card;
+      const facetListData = json?.data?.cards[3]?.card?.card;
+      const listOfRestaurantsData = json?.data?.cards[4]?.card?.card;
 
-      setFoodDeliveryHeading(json?.data?.cards[2]?.card?.card?.title);
+      if (cuisineListData) {
+        setCuisineList(
+          json?.data?.cards[0]?.card?.card?.gridElements?.infoWithStyle?.info
+        );
+        setCuisineListHeading(json?.data?.cards[0].card?.card?.header?.title);
+      }
 
-      setFacetList(json?.data?.cards[3]?.card?.card?.facetList);
+      if (restaurantChainsData) {
+        setRestaurantChains(
+          json?.data?.cards[1].card?.card?.gridElements?.infoWithStyle
+            ?.restaurants
+        );
+        setRestaurantChainHeading(
+          json?.data?.cards[1].card?.card?.header?.title
+        );
+      }
 
-      setListOfRestaurants(
-        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
-      setFilteredRestaurants(
-        json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
+      if (foodDeliveryData) {
+        setFoodDeliveryHeading(json?.data?.cards[2]?.card?.card?.title);
+      }
 
+      if (facetListData) {
+        setFacetList(json?.data?.cards[3]?.card?.card?.facetList);
+      }
 
-    } catch (err) {
-      console.log(err);
+      if (listOfRestaurantsData) {
+        setListOfRestaurants(
+          json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants
+        );
+        setFilteredRestaurants(
+          json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+            ?.restaurants
+        );
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
     }
   };
 
