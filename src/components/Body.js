@@ -8,10 +8,12 @@ import ExploreRestaurants from "./ExploreRestaurants.js";
 import {
   HOME_PAGE_API,
   MOBILE_HOME_PAGE_API,
-  CUISINE_IMAGES_URL
+  CUISINE_IMAGES_URL,
 } from "../utils/constants.js";
 import { IoArrowBackCircle, IoArrowForwardCircle } from "react-icons/io5";
 import Footer from "./Footer";
+import TopPicks from "./TopPicks.js";
+import MobileBanner from "./MobileBanner.js";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -23,7 +25,10 @@ const Body = () => {
   const [restaurantChains, setRestaurantChains] = useState([]);
   const [restaurantChainHeading, setRestaurantChainHeading] = useState("");
   const [facetList, setFacetList] = useState([]);
-  const isMobile = window.innerWidth <= 768;
+  const [topPicksHeader, setTopPicksHeader] = useState("");
+  const [topPicks, setTopPicks] = useState([]);
+  const [mobileBanner, setMobileBanner] = useState([]);
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
   const onlineStatus = useOnlineStatus();
   // const {listOfRestaurants, filteredRestaurants} = useRestaurantList();
@@ -42,14 +47,21 @@ const Body = () => {
       const json = await data.json();
 
       if (isMobile) {
-        console.log(
-          "mobile data",
-          json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
-            ?.restaurants
-        );
+        console.log("mobile data", json?.data?.success);
         setFoodDeliveryHeading(
           json?.data?.success?.cards[4]?.gridWidget?.header?.title
         );
+        setMobileBanner(
+          json?.data?.success?.cards[0]?.gridWidget?.imageGridCards?.info
+        );
+        setTopPicksHeader(
+          json?.data?.success?.cards[1]?.gridWidget?.header
+        );
+        setTopPicks(
+          json?.data?.success?.cards[1]?.gridWidget?.gridElements?.infoWithStyle
+            ?.restaurants
+        );
+
         setListOfRestaurants(
           json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle
             ?.restaurants
@@ -268,9 +280,16 @@ const Body = () => {
           </div>
         </div>
 
+        {isMobile && (
+          <>
+            <MobileBanner banners={mobileBanner} />
+            <TopPicks header={topPicksHeader} restaurants={topPicks} />
+          </>
+        )}
+
         <div className="res-container flex flex-col md:mt-6">
           <div>
-            <h2 className="font-montserrat font-extrabold text-xl opacity-90 m-4 md:mb-4">
+            <h2 className="font-montserrat font-extrabold text-xl opacity-80 m-4 md:mb-4">
               {foodDeliveryHeading}
             </h2>
           </div>

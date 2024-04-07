@@ -3,7 +3,7 @@ import { MENU_API, MOBILE_MENU_API } from "../utils/constants";
 
 const useRestaurantMenu = (resId) => {
   const [resInfo, setResInfo] = useState(null);
-  const isMobile = window.innerWidth <= 768;
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
   useEffect(() => {
     fetchData();

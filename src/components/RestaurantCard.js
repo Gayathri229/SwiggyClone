@@ -54,7 +54,7 @@ const RestaurantCard = (props) => {
 
 // Higher order component
 export const RestaurantCardOffer = (RestaurantCard) => {
-  const isMobile = window.innerWidth <= 768;
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
   // here it returns another component
   return (props) => {
     // actual jsx
