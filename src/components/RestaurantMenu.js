@@ -14,6 +14,7 @@ const RestaurantMenu = () => {
   const resInfo = useRestaurantMenu(resId);
   const [showIndex, setShowIndex] = useState(null);
   const [isVegOnly, setVegOnlyValue] = useState(false);
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
   if (resInfo === null) return <RestaurantMenuShimmer />;
 
@@ -27,39 +28,62 @@ const RestaurantMenu = () => {
     sla,
     veg,
     badges,
-  } = resInfo?.cards[0]?.card?.card?.info;
+  } = resInfo?.cards[2]?.card?.card?.info;
 
-  const { itemCards } =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+  // const { itemCards } =
+  //   (isMobile
+  //     ? resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
+  //         ?.card
+  //     : resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
+  //         ?.card);
 
-  const categories =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
-      (category) =>
-        category?.card?.card?.["@type"] ===
-        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-    );
+  console.log("isMobile value",isMobile);
 
-  const restaurantLicenseInfo =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
-      (category) =>
-        category?.card?.card?.["@type"] ===
-        "type.googleapis.com/swiggy.presentation.food.v2.RestaurantLicenseInfo"
-    );
+  const categories = isMobile
+    ? resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+        (category) =>
+          category?.card?.card?.["@type"] ===
+          "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+      )
+    : resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+        (category) =>
+          category?.card?.card?.["@type"] ===
+          "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+      );
 
-  const restaurantOutletAddress =
-    resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
-      (category) =>
-        category?.card?.card?.["@type"] ===
-        "type.googleapis.com/swiggy.presentation.food.v2.RestaurantAddress"
-    );
+  console.log("categories up", categories);
+
+  const restaurantLicenseInfo = isMobile
+    ? resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+        (category) =>
+          category?.card?.card?.["@type"] ===
+          "type.googleapis.com/swiggy.presentation.food.v2.RestaurantLicenseInfo"
+      )
+    : resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+        (category) =>
+          category?.card?.card?.["@type"] ===
+          "type.googleapis.com/swiggy.presentation.food.v2.RestaurantLicenseInfo"
+      );
+
+  const restaurantOutletAddress = isMobile
+    ? resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+        (category) =>
+          category?.card?.card?.["@type"] ===
+          "type.googleapis.com/swiggy.presentation.food.v2.RestaurantAddress"
+      )
+    : resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+        (category) =>
+          category?.card?.card?.["@type"] ===
+          "type.googleapis.com/swiggy.presentation.food.v2.RestaurantAddress"
+      );
 
   const handleToggle = () => {
     setVegOnlyValue(!isVegOnly);
   };
 
   return (
-    <div className="menu-page text-center w-7/12 m-auto">
-      <div className="restaurant-path flex justify-start font-montserrat text-[10px] font-bold opacity-40 mt-6 px-8 gap-2">
+    <div className="menu-page text-center w-screen md:w-7/12 m-auto">
+      <div className="hidden restaurant-path md:flex justify-start font-montserrat text-[10px] font-bold opacity-40 mt-6 md:px-8 gap-2">
         <span>
           <Link to="/">Home /</Link>
         </span>
@@ -70,8 +94,8 @@ const RestaurantMenu = () => {
           <p>{name}</p>
         </span>
       </div>
-      <div className="restaurant-header flex justify-between px-8 pt-10">
-        <div className="restaurant-header-left flex flex-col items-start m-5">
+      <div className="restaurant-header flex justify-between md:px-8 md:pt-10">
+        <div className="restaurant-header-left flex flex-col items-start m-2 md:m-5">
           <p className="restaurant-name font-bold font-montserrat text-lg mb-2">
             {name}
           </p>
@@ -127,7 +151,7 @@ const RestaurantMenu = () => {
         </svg>
       </div>
 
-      <div className="flex ml-12 mb-6 mt-2 opacity-80">
+      <div className="flex ml-5 md:ml-12 mb-6 mt-2 opacity-80">
         <div className="flex mr-6">
           <MdTimelapse size={22} className="mr-1" />
           <span className="font-montserrat font-extrabold text-sm">
@@ -158,7 +182,7 @@ const RestaurantMenu = () => {
           </span>
         </div>
       ) : (
-        <div className="veg-filter flex justify-start ml-12 mt-12 mb-3">
+        <div className="veg-filter flex justify-start ml-5 md:ml-12 mt-6 md:mt-12 mb-3">
           <p className="mr-3 font-montserrat text-sm font-bold opacity-70">
             Veg Only
           </p>
@@ -187,15 +211,15 @@ const RestaurantMenu = () => {
             categoryMenu={category?.card?.card}
             isVeg={isVegOnly}
             showItems={index === showIndex ? true : false}
-            // setShowIndex = {() => setShowIndex(index)}
             setShowIndex={() => {
+              console.log("index", index);
               index === showIndex ? setShowIndex(null) : setShowIndex(index);
             }}
           />
         ))}
       </div>
 
-      <div className="restaurant-footer h-[230px] bg-[#f1f1f6] flex flex-col items-start mx-12 mt-4 text-[#93959f]">
+      <div className="restaurant-footer h-[230px] bg-[#f1f1f6] flex flex-col items-start md:mx-12 mt-4 text-[#93959f]">
         <div className="license-no flex items-start gap-3 m-4">
           <img
             src={FSSAI_IMAGE}
@@ -211,15 +235,15 @@ const RestaurantMenu = () => {
           height="12"
           xmlns="http://www.w3.org/2000/svg"
           className="opacity-20"
+          style={{width: "100%", height: "auto"}}
         >
           <line
             x1="18"
             y1="1"
-            x2="800"
+            x2="782"
             y2="1"
             stroke="black"
             strokeWidth="1"
-            // strokeDasharray="2 2"
           />
         </svg>
         <div className="outlet-address flex flex-col items-start m-5 font-spaceGrotesk">

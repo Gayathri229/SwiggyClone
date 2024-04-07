@@ -17,7 +17,7 @@ const CartItems = ({ itemList }) => {
           data-testid="foodItems"
           className="p-2 m-2 border-b-2 text-left flex"
         >
-          <div className="w-9/12">
+          <div className="w-7/12 md:w-9/12">
             <div className="flex flex-col py-2">
               <span className="font-semibold font-montserrat">{item.card.info.name}</span>
               <span className="text-sm font-spaceGrotesk opacity-90">
@@ -27,9 +27,9 @@ const CartItems = ({ itemList }) => {
                   : item.card.info.defaultPrice / 100}
               </span>
             </div>
-            <p className="text-xs font-spaceGrotesk opacity-70">{item.card.info.description}</p>
+            {/* <p className="text-xs font-spaceGrotesk opacity-70">{item.card.info.description}</p> */}
           </div>
-          <div className="w-3/12 p-4 flex items-end">
+          <div className="relative w-5/12 md:w-3/12 md:p-4 flex items-end">
             <img
               src={CUISINE_IMAGES_URL + item.card.info.imageId}
               className="w-[130px] rounded-md h-[96px]"

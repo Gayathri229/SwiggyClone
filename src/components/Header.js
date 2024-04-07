@@ -4,9 +4,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
 import { useContext } from "react";
 import { useSelector } from "react-redux";
-import SwoogyLogoThin from "../../public/images/SwoogyLogoThin.svg";
 import SwoogyLogoBold from "../../public/images/SwoogyLogoBold.svg";
-import SwoogyLogoNew from "../../public/images/SwoogyLogoNew.svg";
 
 const Header = () => {
   const [loginBtnName, setLoginBtnName] = useState("Login");
@@ -19,27 +17,26 @@ const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
 
   return (
-    <div className="header flex justify-between shadow-lg h-[90px] items-center">
-      <div className="flex w-10/12 justify-between items-center mx-auto">
+    <div className="flex justify-between shadow-lg h-[90px] items-center">
+      <div className="header flex w-screen md:w-10/12 justify-between items-center mx-auto">
         <div className="logo-container">
           {
             <Link to="/">
               <img
                 src={SwoogyLogoBold}
                 alt="swoogy-logo"
-                className="w-[120px] h-[70px]"
+                className="w-[100px] h-[50px] md:w-[120px] md:h-[70px]"
               />
             </Link>
           }
         </div>
         <div className="nav-items flex items-center">
-          <ul className="flex p-4 m-10 ">
+          <ul className="flex md:p-4 md:m-10 p-2">
             {/* <li>Online Status: {onlineStatus ? "online" : "offline"}</li> */}
-            <li className="px-2 font-montserrat font-bold opacity-60 ml-7 hover:text-orangeColor hover:opacity-100">
+            <li className="px-2 font-montserrat font-bold opacity-60 md:ml-7 ml-1 hover:text-orangeColor hover:opacity-100">
               <Link to="/">Home</Link>
             </li>
-            {/* <li className="font-GrotMed font-[500] opacity-60">Search</li> */}
-            <li className="px-2 font-montserrat font-bold opacity-60 ml-7 hover:text-orangeColor hover:opacity-100">
+            <li className="px-2 font-montserrat font-bold opacity-60 md:ml-7 ml-1 hover:text-orangeColor hover:opacity-100">
               <Link to="/about">About</Link>
             </li>
             {/* <li className="px-2 font-spaceGrotesk font-bold  opacity-70">
@@ -48,7 +45,7 @@ const Header = () => {
             {/* <li className="p-2 m-2">
             <Link to="/grocery">Grocery</Link>
           </li> */}
-            <li className="px-2 font-bold font-montserrat opacity-60 ml-7 group hover:opacity-100">
+            <li className="px-2 font-bold font-montserrat opacity-60 md:ml-7 ml-1 group hover:opacity-100">
               <Link to="/cart" className="flex justify-between">
                 {cartItems.length === 0 ? (
                   <span className="relative flex justify-center -left-1 ">

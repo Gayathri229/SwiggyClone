@@ -22,9 +22,9 @@ const Cart = () => {
   };
 
   return cartItems.length === 0 ? (
-    <div className="flex flex-col justify-center items-center w-6/12 mx-auto">
+    <div className="flex flex-col justify-center items-center w-screen md:w-6/12 md:mx-auto">
       <div className="flex justify-center mt-2">
-        <img src={EMPTY_CART} alt="empty-cart" className="w-7/12" />
+        <img src={EMPTY_CART} alt="empty-cart" className="w-10/12 md:w-7/12" />
       </div>
       <h2 className="font-montserrat font-extrabold text-xl mb-4">
         Your cart is empty
@@ -41,11 +41,11 @@ const Cart = () => {
       </div>
     </div>
   ) : (
-    <div className="text-center m-4 p-4">
+    <div className="text-center md:m-4 p-2 md:p-4">
       <h1 className="text-2xl font-bold font-montserrat">
         Welcome to your cart
       </h1>
-      <div className="w-6/12 m-auto">
+      <div className="md:w-6/12 md:m-auto">
         <button
           className="bg-[#F97316] text-white m-2 p-2 rounded-sm font-montserrat font-semibold"
           onClick={handleClearCart}

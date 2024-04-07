@@ -1,19 +1,29 @@
 export const PROXY_URL = "https://cors-anywhere-5d5n.onrender.com/";
 
 export const CDN_URL =
-  "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
+  // "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/";
+
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
 export const RESTAURANT_LIST =
   "https://www.swiggy.com/dapi/restaurants/search/v3?lat=12.9749593&lng=77.6052293&str=Chicken%20Biryani&trackingId=null&submitAction=SUGGESTION&queryUniqueId=dc350047-d219-529b-1852-c422a981f1dd&metaData=%7B%22type%22%3A%22DISH%22%2C%22data%22%3A%7B%22vegIdentifier%22%3A%22NONVEG%22%2C%22cloudinaryId%22%3A%22jsfblo0hthfqzuztj3up%22%2C%22dishFamilyId%22%3A%22846613%22%2C%22dishTypeId%22%3A%22847329%22%2C%22dishFamilyIds%22%3A%5B%22846613%22%5D%2C%22dishTypeIds%22%3A%5B%22847329%22%5D%7D%2C%22businessCategory%22%3A%22SWIGGY_FOOD%22%2C%22displayLabel%22%3A%22Dish%22%7D&selectedPLTab=RESTAURANT";
 
 export const HOME_PAGE_API =
   PROXY_URL +
-  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627";
+
+export const MOBILE_HOME_PAGE_API =
+  PROXY_URL +
+  "https://www.swiggy.com/mapi/homepage/getCards?lat=12.9715987&lng=77.5945627";
 
 export const MENU_API =
   PROXY_URL +
   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&catalog_qa=undefined&restaurantId=";
 
+export const MOBILE_MENU_API =
+  PROXY_URL +
+  "https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&isMenuUx4=true&submitAction=ENTER&restaurantId=";
+  
 export const RATING =
   "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Green_star_41-108-41.svg/2153px-Green_star_41-108-41.svg.png";
 
