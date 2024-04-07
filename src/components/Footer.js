@@ -4,27 +4,29 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="footer w-screen mt-12">
-      <div className="app-experience flex justify-center bg-[#f0f0f5] h-[110px] w-full">
+      <div className="app-experience flex md:flex-row flex-col justify-center bg-[#f0f0f5] md:h-[110px] w-full">
         <p className="font-spaceGrotesk font-extrabold text-[23px] md:text-[28px] opacity-70 md:mr-24 mt-4">
           For better experience,download <br /> the Swiggy app now
         </p>
-        <Link to="https://play.google.com/store/apps/details?id=in.swiggy.android&referrer=utm_source%3Dswiggy%26utm_medium%3Dheader">
-          <img
-            src={GOOGLE_PLAY_BANNER}
-            alt="google-play-banner"
-            className="h-[30px] md:h-[64px] w-[60px] md:w-[208px] mt-6 mr-6"
-          />
-        </Link>
-        <Link to="https://apps.apple.com/in/app/swiggy-food-grocery-delivery/id989540920?referrer=utm_source%3Dswiggy%26utm_medium%3Dhomepage">
-          <img
-            src={APP_STORE_BANNER}
-            alt="app-store-banner"
-            className="h-[30px] w-[60px] md:h-[64px] md:w-[208px] mt-6"
-          />
-        </Link>
+        <div className="flex justify-center">
+          <Link to="https://play.google.com/store/apps/details?id=in.swiggy.android&referrer=utm_source%3Dswiggy%26utm_medium%3Dheader">
+            <img
+              src={GOOGLE_PLAY_BANNER}
+              alt="google-play-banner"
+              className="h-[50px] md:h-[64px] w-[120px] md:w-[208px] mt-6 mr-6"
+            />
+          </Link>
+          <Link to="https://apps.apple.com/in/app/swiggy-food-grocery-delivery/id989540920?referrer=utm_source%3Dswiggy%26utm_medium%3Dhomepage">
+            <img
+              src={APP_STORE_BANNER}
+              alt="app-store-banner"
+              className="h-[50px] w-[120px] md:h-[64px] md:w-[208px] mt-6"
+            />
+          </Link>
+        </div>
       </div>
-      <div className="bg-[#02060C] md:h-[450px] w-screen">
-        <div className="cols md:flex flex-col justify-center gap-[130px]">
+      <div className=" hidden md:block bg-[#02060C] h-[450px] w-screen">
+        <div className="cols flex justify-center gap-[130px]">
           <div className="col-1 flex flex-col mt-12 gap-3">
             <div className="flex items-center">
               <span>
