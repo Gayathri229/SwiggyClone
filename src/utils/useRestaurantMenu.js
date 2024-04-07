@@ -14,7 +14,6 @@ const useRestaurantMenu = (resId) => {
     const data = await fetch(url);
     const json = await data.json();
     setResInfo(json.data);
-    isMobile && console.log("mobile menu",json);
   };
 
   return resInfo;

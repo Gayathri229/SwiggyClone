@@ -22,7 +22,6 @@ export const RestaurantCategory = ({
 
   return (
     <div>
-      {console.log("in res category")}
       {menuLength !== 0 && (
         <div className="accordion-header w-screen md:w-11/12 md:mx-auto my-2 p-3">
           <div

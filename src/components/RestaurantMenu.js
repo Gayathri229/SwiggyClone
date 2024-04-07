@@ -30,14 +30,6 @@ const RestaurantMenu = () => {
     badges,
   } = resInfo?.cards[2]?.card?.card?.info;
 
-  // const { itemCards } =
-  //   (isMobile
-  //     ? resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-  //         ?.card
-  //     : resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-  //         ?.card);
-
-  console.log("isMobile value",isMobile);
 
   const categories = isMobile
     ? resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
@@ -50,8 +42,6 @@ const RestaurantMenu = () => {
           category?.card?.card?.["@type"] ===
           "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
       );
-
-  console.log("categories up", categories);
 
   const restaurantLicenseInfo = isMobile
     ? resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
@@ -171,7 +161,7 @@ const RestaurantMenu = () => {
       </div> */}
 
       {veg ? (
-        <div className="pure-veg flex justify-start ml-12 mt-12 mb-3 items-center">
+        <div className="pure-veg flex justify-start ml-2 md:ml-12 mt-12 mb-3 items-center">
           <img
             src={PURE_VEG_LOGO}
             alt="pure-veg-logo"
@@ -212,7 +202,6 @@ const RestaurantMenu = () => {
             isVeg={isVegOnly}
             showItems={index === showIndex ? true : false}
             setShowIndex={() => {
-              console.log("index", index);
               index === showIndex ? setShowIndex(null) : setShowIndex(index);
             }}
           />
